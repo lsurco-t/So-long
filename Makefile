@@ -6,7 +6,7 @@
 #    By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/23 19:49:11 by lsurco-t          #+#    #+#              #
-#    Updated: 2025/07/05 21:59:30 by lsurco-t         ###   ########.fr        #
+#    Updated: 2025/07/05 22:00:39 by lsurco-t         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,6 @@ SRC_DIR = src
 LIBFT = $(LIBFT_DIR)/libft.a
 MLX42 = $(MLX42_DIR)/build/libmlx42.a
 
-# Libraries and linking flags for Linux
 LIBS = $(MLX42) $(LIBFT) -ldl -lglfw -pthread -lm
 SRC = $(SRC_DIR)/so_long.c
 
