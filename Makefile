@@ -6,37 +6,27 @@
 #    By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/23 19:49:11 by lsurco-t          #+#    #+#              #
-#    Updated: 2025/07/05 21:33:21 by lsurco-t         ###   ########.fr        #
+#    Updated: 2025/07/05 21:43:26 by lsurco-t         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
-
-# Directories
 LIBFT_DIR = ./libft
 MLX42_DIR = ./MLX42
 OBJ_DIR = obj
 SRC_DIR = src
-
-# Libraries
 LIBFT = $(LIBFT_DIR)/libft.a
 MLX42 = $(MLX42_DIR)/build/libmlx42.a
-
-# Headers
 HEADERS = -I./utils -I$(LIBFT_DIR) -I$(MLX42_DIR)/include
 
-# Libraries and linking flags for Linux
-LIBS = $(MLX42) $(LIBFT) -ldl -lglfw -pthread -lm
 
-# Source files
+LIBS = $(MLX42) $(LIBFT) -ldl -lglfw -pthread -lm
 SRC = $(SRC_DIR)/so_long.c
 
-# Object files
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
-# Colors for pretty output
 GREEN = \033[0;32m
 RED = \033[0;31m
 BLUE = \033[0;34m
@@ -66,7 +56,7 @@ $(NAME): $(OBJ) $(LIBFT) $(MLX42)
 	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBS)
 	@echo "$(GREEN)$(NAME) built successfully!$(RESET)"
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
 	@$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@
 	@echo "$(GREEN)Compiled: $(notdir $<)$(RESET)"
 
