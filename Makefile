@@ -6,7 +6,7 @@
 #    By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/23 19:49:11 by lsurco-t          #+#    #+#              #
-#    Updated: 2025/07/05 21:43:26 by lsurco-t         ###   ########.fr        #
+#    Updated: 2025/07/05 21:59:30 by lsurco-t         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,9 +19,8 @@ OBJ_DIR = obj
 SRC_DIR = src
 LIBFT = $(LIBFT_DIR)/libft.a
 MLX42 = $(MLX42_DIR)/build/libmlx42.a
-HEADERS = -I./utils -I$(LIBFT_DIR) -I$(MLX42_DIR)/include
 
-
+# Libraries and linking flags for Linux
 LIBS = $(MLX42) $(LIBFT) -ldl -lglfw -pthread -lm
 SRC = $(SRC_DIR)/so_long.c
 
@@ -57,7 +56,7 @@ $(NAME): $(OBJ) $(LIBFT) $(MLX42)
 	@echo "$(GREEN)$(NAME) built successfully!$(RESET)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
-	@$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@
 	@echo "$(GREEN)Compiled: $(notdir $<)$(RESET)"
 
 clean:
