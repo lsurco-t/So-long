@@ -6,43 +6,80 @@
 #    By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/23 19:49:11 by lsurco-t          #+#    #+#              #
-#    Updated: 2025/07/03 10:06:37 by lsurco-t         ###   ########.fr        #
+#    Updated: 2025/07/05 21:33:21 by lsurco-t         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
+
+# Directories
 LIBFT_DIR = ./libft
-LIBFT = $(LIBFT_DIR)/libft.a
+MLX42_DIR = ./MLX42
 OBJ_DIR = obj
-SRC = srcs/pipex.c srcs/process_mgmt.c \
-	  srcs/command_path.c srcs/pipe_handling.c \
-	  srcs/utils.c
+SRC_DIR = src
 
-OBJ = $(SRC:srcs/%.c=$(OBJ_DIR)/%.o)
+# Libraries
+LIBFT = $(LIBFT_DIR)/libft.a
+MLX42 = $(MLX42_DIR)/build/libmlx42.a
 
-all: $(OBJ_DIR) $(LIBFT) $(NAME)
+# Headers
+HEADERS = -I./utils -I$(LIBFT_DIR) -I$(MLX42_DIR)/include
+
+# Libraries and linking flags for Linux
+LIBS = $(MLX42) $(LIBFT) -ldl -lglfw -pthread -lm
+
+# Source files
+SRC = $(SRC_DIR)/so_long.c
+
+# Object files
+OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+
+# Colors for pretty output
+GREEN = \033[0;32m
+RED = \033[0;31m
+BLUE = \033[0;34m
+RESET = \033[0m
+
+all: $(OBJ_DIR) $(LIBFT) $(MLX42) $(NAME)
 
 $(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)
+	@mkdir -p $(OBJ_DIR)
+	@echo "$(BLUE)Created object directory$(RESET)"
 
 $(LIBFT):
-	make -C $(LIBFT_DIR)
+	@echo "$(BLUE)Building libft...$(RESET)"
+	@make -C $(LIBFT_DIR)
+	@echo "$(GREEN)Libft built successfully$(RESET)"
 
-$(NAME): $(OBJ) $(LIBFT)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT)
+$(MLX42):
+	@echo "$(BLUE)Building MLX42...$(RESET)"
+	@if [ ! -d "$(MLX42_DIR)/build" ]; then \
+		cmake -B $(MLX42_DIR)/build $(MLX42_DIR); \
+	fi
+	@make -C $(MLX42_DIR)/build -j4
+	@echo "$(GREEN)MLX42 built successfully$(RESET)"
 
-$(OBJ_DIR)/%.o: srcs/%.c
-	$(CC) $(CFLAGS) -c $< -o $@
+$(NAME): $(OBJ) $(LIBFT) $(MLX42)
+	@echo "$(BLUE)Linking $(NAME)...$(RESET)"
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBS)
+	@echo "$(GREEN)$(NAME) built successfully!$(RESET)"
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	@$(CC) $(CFLAGS) $(HEADERS) -c $< -o $@
+	@echo "$(GREEN)Compiled: $(notdir $<)$(RESET)"
 
 clean:
-	rm -rf $(OBJ_DIR)
-	make -C $(LIBFT_DIR) clean
+	@rm -rf $(OBJ_DIR)
+	@make -C $(LIBFT_DIR) clean
+	@echo "$(RED)Cleaned object files$(RESET)"
 
 fclean: clean
-	rm -f $(NAME)
-	make -C $(LIBFT_DIR) fclean
+	@rm -f $(NAME)
+	@make -C $(LIBFT_DIR) fclean
+	@rm -rf $(MLX42_DIR)/build
+	@echo "$(RED)Full clean completed$(RESET)"
 
 re: fclean all
 
