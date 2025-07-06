@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 10:23:16 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/05 21:58:25 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/06 16:43:51 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@
 # include <fcntl.h>
 # include <string.h>
 # include <math.h>
-# include "../libft/libft.h"
-# include "../MLX42/include/MLX42/MLX42.h"
+# include "./libft/libft.h"
+# include "./MLX42/include/MLX42/MLX42.h"
 
 // Window constants
 # define WIDTH 800
