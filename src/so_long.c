@@ -6,11 +6,11 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 10:21:40 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/05 21:33:21 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/06 16:39:02 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../utils/so_long.h"
+#include "../so_long.h"
 
 void	ft_error(const char *message)
 {
