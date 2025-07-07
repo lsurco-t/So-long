@@ -6,8 +6,13 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:52:32 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/06 16:52:36 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/07 15:35:54 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+void	cleanup_game(t_game *game)
+{
+
+}

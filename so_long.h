@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 10:23:16 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/06 16:43:51 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/07 15:41:13 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@
 # include <math.h>
 # include "./libft/libft.h"
 # include "./MLX42/include/MLX42/MLX42.h"
+
+// Colors
+#define GREEN	"\033[0;32m"
+#define RED		"\033[0;31m"
+#define BLUE	"\033[0;34m"
+#define RESET 	"\033[0m"
 
 // Window constants
 # define WIDTH 800
@@ -57,7 +63,6 @@ typedef struct s_game
 	int			map_width;
 	int			map_height;
 	int			player_x;
-	int			player_y;
 	int			collectibles;
 	int			moves;
 	int			exit_open;
@@ -70,7 +75,7 @@ int		validate_map(t_game *game);
 int		init_game(t_game *game);
 int		init_images(t_game *game);
 void	render_map(t_game *game);
-void	move_player(t_game *game, int new_x, int new_y);
+void	move_player(t_game *game, int new_x);
 void	key_hook(mlx_key_data_t keydata, void *param);
 void	cleanup_game(t_game *game);
 void	ft_error(const char *message);

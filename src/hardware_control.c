@@ -6,9 +6,13 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:46:24 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/06 16:46:36 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/07 15:40:41 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
+void	key_hook(mlx_key_data_t keydata, void *param)
+{
+	
+}

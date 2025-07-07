@@ -6,8 +6,19 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:51:19 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/06 16:51:23 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/07 15:40:13 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+int		init_game(t_game *game)
+{
+
+	
+}
+
+int		init_images(t_game *game)
+{
+	
+}

@@ -6,8 +6,13 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:51:02 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/06 16:51:07 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/07 15:34:52 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+int		validate_map(t_game *game)
+{
+	
+}

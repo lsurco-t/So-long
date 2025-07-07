@@ -6,8 +6,13 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:51:31 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/06 16:51:37 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/07 15:31:30 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+void	render_map(t_game *game)
+{
+	
+}

@@ -6,8 +6,13 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:52:18 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/06 16:52:24 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/07 15:40:53 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+void	ft_error(const char *message)
+{
+	
+}
