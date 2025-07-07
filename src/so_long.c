@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 10:21:40 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/07 19:25:11 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/07 21:01:03 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 		ft_printf("Error\nFailed to read map file\n");
         return (1);
 	}
-	if (validate_map(&game, game.map) == FAIL)
+	if (validate_map(game.map) == FAIL)
     {
         free_map(game.map);
         return (1);

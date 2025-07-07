@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 10:23:16 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/07 20:35:03 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/07 21:57:23 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,13 @@ typedef struct s_game
 void	free_map_on_error(char **map, int lines);
 char	**parse_map(char *filename);
 void	free_map(char **map);
+int		get_rows(char **map);
+int		get_columns(char **map);
+int	characters_to_check(char *line, const char *chars);
 
-int		validate_map(t_game *game, char *map_path);
+int		validate_map(char **game);
+
+
 int		init_game(t_game *game);
 int		init_images(t_game *game);
 void	render_map(t_game *game);

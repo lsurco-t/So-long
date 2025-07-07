@@ -6,65 +6,105 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:51:02 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/07 20:49:22 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/07 22:13:56 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-static int characters_to_check(char *line, const char *chars)
+static int	is_valid_walls(char **map)
 {
-	int i;
+	int	rows;
+	int	columns;
+	int	i;
 
+	rows = get_rows(map);
+	columns = get_columns(map);
 	i = 0;
-	while(line[i])
+	while (i < columns)
 	{
-		if (!ft_strchr(chars, line[i]))
+		if (map[0][i] != '1' || map[rows - 1][i] != '1')
+			return (FAIL);
+		i++;
+	}
+	i = 0;
+	while (i < rows)
+	{
+		if (map[i][0] != '1' || map[i][columns - 1] != '1')
 			return (FAIL);
 		i++;
 	}
 	return (SUCCESS);
 }
 
-static int is_valid_walls(const char *map)
+static int	has_valid_start_exit_collec(char **map)
 {
-	int counter;
-}
+	int	start;
+	int	exit;
+	int	collectible;
+	int	j;
+	int	i;
 
-static int has_valid_start_exit_collec(const char *map)
-{
-	int counter;
-}
-static int has_valid_chars(const char **map)
-{
-	char *line;
-	char *chars;
-	int i;
-	
-	chars = "10CEP\n";
+	start = 0;
+	exit = 0;
+	collectible = 0;
 	i = 0;
-	while(map[i])
+	while (map[i])
 	{
-		if(characters_to_check(map[i], chars))
+		j = 0;
+		while (map[i][j])
+		{
+			if (map[i][j] == 'P')
+				start++;
+			else if (map[i][j] == 'E')
+				exit++;
+			else if (map[i][j] == 'C')
+				collectible++;
+			j++;
+		}
+		i++;
+	}
+	if (start != 1 || exit != 1 || collectible < 1)
+		return (FAIL);
+	return (SUCCESS);
+}
+static int	has_valid_chars(char **map)
+{
+	char	*chars;
+	int		i;
+
+	chars = "10CEP";
+	i = 0;
+	while (map[i])
+	{
+		if (characters_to_check(map[i], chars))
+		{
+			ft_putstr_fd(RED "Error\nInvalid characters!" RESET, 2);
 			return (FAIL);
+		}
 	}
 	return (SUCCESS);
 }
-int		validate_map(char **map)
+int	validate_map(char **map)
 {
-	if (has_valid_chars(map))
+	int	columns;
+
+	columns = get_columns(map);
+	if (columns == FAIL)
 	{
-		ft_putstr_fd(RED"Error\nInvalid characters!"RESET,2);
+		ft_putstr_fd(RED "Error\nMap is not rectangle!" RESET, 2);
 		return (FAIL);
 	}
+	if (has_valid_chars(map))
+		return (FAIL);
 	else if (has_valid_start_exit_collec(map))
 	{
-		ft_putstr_fd(RED"Error\nMissing start, exit or collectible!"RESET,2);
+		ft_putstr_fd(RED "Error\nMissing start, exit or collectible!" RESET, 2);
 		return (FAIL);
 	}
 	else if (is_valid_walls(map))
 	{
-		ft_putstr_fd(RED"Error\nIncomplete walls!"RESET,2);
+		ft_putstr_fd(RED "Error\nIncomplete walls!" RESET, 2);
 		return (FAIL);
 	}
 	else
