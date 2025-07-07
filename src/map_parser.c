@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:36:25 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/07 19:56:14 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/07 20:18:35 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	count_lines(char *map_path)
 	count = 0;
 	fd = open(map_path, O_RDONLY);
 	if (fd < 0)
-		return (FAIL);
+		return (-1);
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
@@ -36,13 +36,11 @@ static int	count_lines(char *map_path)
 static char	**allocate_map(int lines)
 {
 	char	**map;
-	int		i;
 
-	i = 0;
 	map = malloc(sizeof(char *) * (lines + 1));
 	if (!map)
 		return (NULL);
-	map[lines] = '\0';
+	map[lines] = NULL;
 	return (map);
 }
 
@@ -57,39 +55,52 @@ static char	*trim_newline(char *line)
 		line[len - 1] = '\0';
 	return (line);
 }
-static char	is_lines_read(int indx, char *line, char **map)
-{
-	if (indx != line)
-	{
-		free_map_on_error(map, indx);
-		return (NULL);
-	}
-}
-char	**parse_map(char *map_path)
+
+static char	**read_map_lines(char *map_path, int lines)
 {
 	int		fd;
 	char	**map;
 	char	*current_line;
-	int		lines;
 	int		i;
 
-	fd = open(map_path, O_RDONLY);
-	if (fd < 0)
-		return (NULL);
-	lines = count_lines(map_path);
-	if (lines <= 0)
-		return (NULL);
 	map = allocate_map(lines);
 	if (!map)
 		return (NULL);
+	fd = open(map_path, O_RDONLY);
+	if (fd < 0)
+		return (free(map), NULL);
+	i = 0;
 	current_line = get_next_line(fd);
 	while (current_line != NULL && i < lines)
 	{
 		trim_newline(current_line);
-		map[i++] = current_line;
+		map[i] = current_line;
+		i++;
 		current_line = get_next_line(fd);
 	}
 	close(fd);
-	is_lines_read(i, lines, map);
+	return (map);
+}
+
+char	**parse_map(char *map_path)
+{
+	int		lines;
+	char	**map;
+	int		read_lines;
+
+	lines = count_lines(map_path);
+	if (lines <= 0)
+		return (NULL);
+	map = read_map_lines(map_path, lines);
+	if (!map)
+		return (NULL);
+	read_lines = 0;
+	while (map[read_lines])
+		read_lines++;
+	if (read_lines != lines)
+	{
+		free_map_on_error(map, read_lines);
+		return (NULL);
+	}
 	return (map);
 }
