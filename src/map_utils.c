@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 19:18:27 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/07 19:50:12 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/07 20:28:34 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,19 @@ void free_map_on_error(char **map, int lines)
 		i++;
 	}
 	free(map);
+}
+
+void	free_map(char **map)
+{
+    int	i;
+
+    if (!map)
+        return ;
+    i = 0;
+    while (map[i])
+    {
+        free(map[i]);
+        i++;
+    }
+    free(map);
 }

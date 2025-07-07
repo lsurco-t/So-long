@@ -6,3 +6,4 @@ MLX42_GUIDE.md
 .vscode
 *.exe
 so_long
+main.c
