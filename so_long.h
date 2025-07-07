@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 10:23:16 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/07 21:57:23 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/07 23:13:38 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ char	**parse_map(char *filename);
 void	free_map(char **map);
 int		get_rows(char **map);
 int		get_columns(char **map);
-int	characters_to_check(char *line, const char *chars);
+int		characters_to_check(char *line, const char *chars);
 
 int		validate_map(char **game);
 

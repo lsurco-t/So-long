@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 19:18:27 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/07 22:23:11 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/07 23:08:48 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,16 @@ int	get_columns(char **map)
 	int	current_column;
 	int	first_column;
 
-	if (!map || !map[0])
+	if (!map || !map[0] || !map[0][0])
 		return (FAIL);
 	first_column = ft_strlen(map[0]);
+	if (first_column == 0)
+		return (FAIL);
 	i = 1;
 	while (map[i])
 	{
+		if (!map[i][0])
+			return (FAIL);
 		current_column = ft_strlen(map[i]);
 		if (current_column != first_column)
 			return (FAIL);

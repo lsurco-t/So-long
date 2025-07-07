@@ -6,13 +6,13 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:51:02 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/07 22:22:12 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/07 23:27:20 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-static int	is_valid_walls(char **map)
+static int	has_valid_walls(char **map)
 {
 	int	rows;
 	int	columns;
@@ -20,6 +20,8 @@ static int	is_valid_walls(char **map)
 
 	rows = get_rows(map);
 	columns = get_columns(map);
+	if (rows <= 0 || columns <= 0)
+		return (FAIL);
 	i = 0;
 	while (i < columns)
 	{
@@ -37,17 +39,14 @@ static int	is_valid_walls(char **map)
 	return (SUCCESS);
 }
 
-static int	has_valid_start_exit_collec(char **map)
+static int	count_game_elements(char **map, int *start, int *exit, int *collec)
 {
-	int	start;
-	int	exit;
-	int	collectible;
-	int	j;
 	int	i;
+	int	j;
 
-	start = 0;
-	exit = 0;
-	collectible = 0;
+	*start = 0;
+	*exit = 0;
+	*collec = 0;
 	i = 0;
 	while (map[i])
 	{
@@ -55,15 +54,24 @@ static int	has_valid_start_exit_collec(char **map)
 		while (map[i][j])
 		{
 			if (map[i][j] == 'P')
-				start++;
+				(*start)++;
 			else if (map[i][j] == 'E')
-				exit++;
+				(*exit)++;
 			else if (map[i][j] == 'C')
-				collectible++;
+				(*collec)++;
 			j++;
 		}
 		i++;
 	}
+}
+
+static int	has_valid_start_exit_collec(char **map)
+{
+	int	start;
+	int	exit;
+	int	collectible;
+
+	count_game_elements(map, &start, &exit, &collectible);
 	if (start != 1 || exit != 1 || collectible < 1)
 		return (FAIL);
 	return (SUCCESS);
@@ -80,9 +88,9 @@ static int	has_valid_chars(char **map)
 	{
 		if (characters_to_check(map[i], chars))
 		{
-			ft_putstr_fd(RED "Error\nInvalid characters!" RESET, 2);
 			return (FAIL);
 		}
+		i++;
 	}
 	return (SUCCESS);
 }
@@ -97,18 +105,20 @@ int	validate_map(char **map)
 		ft_putstr_fd(RED "Error\nMap is not rectangle!" RESET, 2);
 		return (FAIL);
 	}
-	if (has_valid_chars(map))
+	if (has_valid_chars(map) == FAIL)
+	{
+		ft_putstr_fd(RED "Error\nInvalid characters!" RESET, 2);
 		return (FAIL);
-	else if (has_valid_start_exit_collec(map))
+	}
+	if (has_valid_start_exit_collec(map) == FAIL)
 	{
 		ft_putstr_fd(RED "Error\nMissing start, exit or collectible!" RESET, 2);
 		return (FAIL);
 	}
-	else if (is_valid_walls(map))
+	if (is_valid_walls(map) == FAIL)
 	{
 		ft_putstr_fd(RED "Error\nIncomplete walls!" RESET, 2);
 		return (FAIL);
 	}
-	else
-		return (SUCCESS);
+	return (SUCCESS);
 }
