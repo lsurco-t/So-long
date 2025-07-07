@@ -14,7 +14,7 @@
 
 int	main(int argc, char **argv)
 {
-	t_game  game;
+	t_game	game;
 
 	if (argc != 2)
 	{
@@ -23,17 +23,17 @@ int	main(int argc, char **argv)
 	}
 	ft_memset(&game, 0, sizeof(t_game));
 	game.map = parse_map(argv[1]);
-	if(!game.map)
+	if (!game.map)
 	{
 		ft_printf("Error\nFailed to read map file\n");
-        return (1);
+		return (1);
 	}
 	if (validate_map(game.map) == FAIL)
-    {
-        free_map(game.map);
-        return (1);
-    }
+	{
+		free_map(game.map);
+		return (1);
+	}
 	init_game(&game);
-    render_map(&game);
+	render_map(&game);
 	return (0);
 }

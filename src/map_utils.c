@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/07 19:18:27 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/07 21:57:01 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/07 22:23:11 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	get_rows(char **map)
 
 int	characters_to_check(char *line, const char *chars)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (line[i])

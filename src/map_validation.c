@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:51:02 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/07 22:13:56 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/07 22:22:12 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ static int	has_valid_start_exit_collec(char **map)
 		return (FAIL);
 	return (SUCCESS);
 }
+
 static int	has_valid_chars(char **map)
 {
 	char	*chars;
@@ -85,6 +86,7 @@ static int	has_valid_chars(char **map)
 	}
 	return (SUCCESS);
 }
+
 int	validate_map(char **map)
 {
 	int	columns;
