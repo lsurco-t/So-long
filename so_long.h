@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 10:23:16 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/07 15:41:13 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/07 16:33:39 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <fcntl.h>
 # include <string.h>
 # include <math.h>
+# include <errno.h>
 # include "./libft/libft.h"
 # include "./MLX42/include/MLX42/MLX42.h"
 
@@ -47,6 +48,10 @@
 # define KEY_D		MLX_KEY_D
 # define KEY_ESC	MLX_KEY_ESCAPE
 
+// RETURN CODE
+#define SUCCESS 0
+#define FAIL 1
+
 // Tile size in pixels
 # define TILE_SIZE	32
 
@@ -71,7 +76,7 @@ typedef struct s_game
 // Function prototypes
 int		main(int argc, char **argv);
 int		parse_map(t_game *game, char *filename);
-int		validate_map(t_game *game);
+int		validate_map(t_game *game, char *map_path);
 int		init_game(t_game *game);
 int		init_images(t_game *game);
 void	render_map(t_game *game);
