@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:51:19 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/08 17:33:18 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/08 17:36:05 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,35 +36,22 @@ mlx_image_t	*load_image(mlx_t *mlx, const char *path)
 }
 int	init_images(t_game *game)
 {
-	game->img_wall = load_image(game->mlx, "./assets/wall.png");
+	game->img_wall = load_image(game->mlx, "../textures/wallStone_fence.png");
 	if (!game->img_wall)
 		return (FAIL);
-	game->img_floor = load_image(game->mlx, "./assets/floor.png");
+	game->img_floor = load_image(game->mlx, "../assets/floor.png");
 	if (!game->img_floor)
 		return (FAIL);
-	game->img_collectible = load_image(game->mlx, "./assets/collectible.png");
+	game->img_collectible = load_image(game->mlx, "../maps/gem.png");
 	if (!game->img_collectible)
 		return (FAIL);
-	game->img_exit = load_image(game->mlx, "./assets/exit.png");
+	game->img_exit = load_image(game->mlx, "../textures/groundExit.png");
 	if (!game->img_exit)
 		return (FAIL);
-	game->img_player = load_image(game->mlx, "./assets/player.png");
+	game->img_player = load_image(game->mlx, "../textures/walk_down.png");
 	if (!game->img_player)
 		return (FAIL);
 	return (SUCCESS);
-}
-void	cleanup_images(t_game *game)
-{
-	if (game->img_wall)
-		mlx_delete_image(game->mlx, game->img_wall);
-	if (game->img_floor)
-		mlx_delete_image(game->mlx, game->img_floor);
-	if (game->img_collectible)
-		mlx_delete_image(game->mlx, game->img_collectible);
-	if (game->img_exit)
-		mlx_delete_image(game->mlx, game->img_exit);
-	if (game->img_player)
-		mlx_delete_image(game->mlx, game->img_player);
 }
 
 int	init_game(t_game *game)
