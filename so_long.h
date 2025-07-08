@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 10:23:16 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/08 19:13:13 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/08 19:19:01 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,5 +121,6 @@ void 			render_map(t_game *game);
 
 void 			key_hook(mlx_key_data_t keydata, void *param);
 void			move_player(t_game *game, int dx, int dy);
+void			update_player_position(t_game *game);
 
 #endif
