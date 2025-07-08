@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 10:21:40 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/08 18:03:54 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/08 18:05:35 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ int	main(int argc, char **argv)
 		free_and_exit(game.map);
 	init_game(&game);
 	render_map(&game);
+	mlx_loop(game.mlx);
 	return (0);
 }
