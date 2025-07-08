@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 10:23:16 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/08 19:19:01 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/08 19:44:48 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 // Window constants
 # define WIDTH 800
 # define HEIGHT 600
-# define TITLE "So_long"
+# define TITLE "so_long"
 
 // Game elements
 # define WALL '1'
