@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:51:19 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/08 17:36:05 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/08 17:42:28 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 mlx_image_t	*load_image(mlx_t *mlx, const char *path)
 {
-	mlx_image_t	*image;
+	mlx_image_t		*image;
 	mlx_texture_t	*texture;
 
 	texture = mlx_load_png(path);
@@ -29,12 +29,30 @@ mlx_image_t	*load_image(mlx_t *mlx, const char *path)
 	mlx_delete_texture(texture);
 	if (!image)
 	{
-		ft_putstr_fd(RED "Error\nFailed to convert texture to image\n" RESET, 2);
+		ft_putstr_fd(RED "Error\nFailed to convert texture to image\n" RESET,
+			2);
 		return (NULL);
 	}
 	return (image);
 }
-int	init_images(t_game *game)
+
+int init_player_images(t_game *game)
+{
+	game->img_player_up = load_image(game->mlx, "../textures/walk_up.png");
+	if (!game->img_player_up)
+		return (FAIL);
+	game->img_player_down = load_image(game->mlx, "../textures/walk_down.png");
+	if (!game->img_player_down)
+		return (FAIL);
+	game->img_player_left = load_image(game->mlx, "../textures/walk_left.png");
+	if (!game->img_player_left)
+		return (FAIL);
+	game->img_player_right = load_image(game->mlx, "../textures/walk_right.png");
+	if (!game->img_player_right)
+		return (FAIL);
+	return (SUCCESS);
+}
+int	init_background_images(t_game *game)
 {
 	game->img_wall = load_image(game->mlx, "../textures/wallStone_fence.png");
 	if (!game->img_wall)
@@ -48,8 +66,8 @@ int	init_images(t_game *game)
 	game->img_exit = load_image(game->mlx, "../textures/groundExit.png");
 	if (!game->img_exit)
 		return (FAIL);
-	game->img_player = load_image(game->mlx, "../textures/walk_down.png");
-	if (!game->img_player)
+	game->img_inwall = load_image(game->mlx, "../textures/wallStone_small.png");
+	if (!game->img_inwall)
 		return (FAIL);
 	return (SUCCESS);
 }
@@ -58,15 +76,22 @@ int	init_game(t_game *game)
 {
 	game->map_width = get_columns(game->map);
 	game->map_height = get_rows(game->map);
-	game->mlx = mlx_init(game->map_width * TILE_SIZE, game->map_height * TILE_SIZE, TITLE, false);
+	game->mlx = mlx_init(game->map_width * TILE_SIZE, game->map_height
+			* TILE_SIZE, TITLE, false);
 	if (!game->mlx)
 	{
 		ft_putstr_fd(RED "Error\nFailed to initialize MLX42\n" RESET, 2);
 		return (FAIL);
 	}
-	if (init_game_images(game) == FAIL)
+	if (init_background_images(game) == FAIL)
 	{
-		ft_putstr_fd(RED "Error\nFailed to initialize game images\n" RESET, 2);
+		ft_putstr_fd(RED "Error\nFailed to initialize background images\n" RESET, 2);
+		mlx_terminate(game->mlx);
+		return (FAIL);
+	}
+	if (init_player_images(game) == FAIL)
+	{
+		ft_putstr_fd(RED "Error\nFailed to initialize player images\n" RESET, 2);
 		mlx_terminate(game->mlx);
 		return (FAIL);
 	}

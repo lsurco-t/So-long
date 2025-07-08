@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 10:23:16 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/08 17:27:30 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/08 17:40:35 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,14 @@ typedef struct s_game
 {
 	mlx_t		*mlx;
 	mlx_image_t	*img_wall;
+	mlx_image_t	*img_inwall;
 	mlx_image_t	*img_floor;
 	mlx_image_t	*img_collectible;
 	mlx_image_t	*img_exit;
-	mlx_image_t	*img_player;
+	mlx_image_t	*img_player_up;
+	mlx_image_t	*img_player_down;
+	mlx_image_t	*img_player_left;
+	mlx_image_t	*img_player_right;
 	char		**map;
 	int			map_width;
 	int			map_height;
