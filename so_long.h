@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 10:23:16 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/08 17:50:57 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/08 18:03:05 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,6 @@ int				free_and_exit(char **map);
 void			cleanup_images(t_game *game);
 
 int				init_game(t_game *game);
+void 			render_map(t_game *game);
 
 #endif
