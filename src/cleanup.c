@@ -26,7 +26,7 @@ void	cleanup_images(t_game *game)
 		mlx_delete_image(game->mlx, game->img_player_up);
 	if (game->img_player_down)
 		mlx_delete_image(game->mlx, game->img_player_down);
-	if (game->img_player_left)			
+	if (game->img_player_left)
 		mlx_delete_image(game->mlx, game->img_player_left);
 	if (game->img_player_right)
 		mlx_delete_image(game->mlx, game->img_player_right);

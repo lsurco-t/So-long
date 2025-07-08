@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 13:09:59 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/08 13:11:05 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/08 22:45:56 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ int	has_valid_walls(char **map)
 	i = 0;
 	while (i < columns)
 	{
-		if (map[0][i] != '1' || map[rows - 1][i] != '1')
+		if (map[0][i] != WALL || map[rows - 1][i] != WALL)
 			return (FAIL);
 		i++;
 	}
 	i = 0;
 	while (i < rows)
 	{
-		if (map[i][0] != '1' || map[i][columns - 1] != '1')
+		if (map[i][0] != WALL || map[i][columns - 1] != WALL)
 			return (FAIL);
 		i++;
 	}
@@ -53,11 +53,11 @@ static void	count_game_elements(char **map, int *start, int *exit, int *collec)
 		j = 0;
 		while (map[i][j])
 		{
-			if (map[i][j] == 'P')
+			if (map[i][j] == PLAYER)
 				(*start)++;
-			else if (map[i][j] == 'E')
+			else if (map[i][j] == EXIT)
 				(*exit)++;
-			else if (map[i][j] == 'C')
+			else if (map[i][j] == COLLECTIBLE)
 				(*collec)++;
 			j++;
 		}

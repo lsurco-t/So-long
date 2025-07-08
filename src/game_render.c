@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:51:31 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/08 18:59:40 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/08 22:46:50 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ void	render_player(t_game *game, int x, int y)
 
 void	render_extras(char tile, t_game *game, int x, int y)
 {
-	if (tile == 'C')
+	if (tile == COLLECTIBLE)
 		mlx_image_to_window(game->mlx, game->img_collectible, x * TILE_SIZE, y
 			* TILE_SIZE);
-	else if (tile == 'E')
+	else if (tile == EXIT)
 		mlx_image_to_window(game->mlx, game->img_exit, x * TILE_SIZE, y
 			* TILE_SIZE);
 }
@@ -53,12 +53,12 @@ void	render_map(t_game *game)
 			mlx_image_to_window(game->mlx, game->img_floor, x * TILE_SIZE, y
 				* TILE_SIZE);
 			tile = game->map[y][x];
-			if (tile == '1')
+			if (tile == WALL)
 				mlx_image_to_window(game->mlx, game->img_wall, x * TILE_SIZE, y
 					* TILE_SIZE);
-			else if (tile == 'C' || tile == 'E')
+			else if (tile == COLLECTIBLE || tile == EXIT)
 				render_extras(tile, game, x, y);
-			else if (tile == 'P')
+			else if (tile == PLAYER)
 				render_player(game, x, y);
 			x++;
 		}

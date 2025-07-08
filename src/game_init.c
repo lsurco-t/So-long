@@ -36,7 +36,7 @@ mlx_image_t	*load_image(mlx_t *mlx, char *path)
 	return (image);
 }
 
-int init_player_images(t_game *game)
+int	init_player_images(t_game *game)
 {
 	game->img_player_up = load_image(game->mlx, "./textures/walk_up.png");
 	if (!game->img_player_up)
@@ -85,13 +85,15 @@ int	init_game(t_game *game)
 	}
 	if (init_background_images(game) == FAIL)
 	{
-		ft_putstr_fd(RED "Error\nFailed to initialize background images\n" RESET, 2);
+		ft_putstr_fd(RED "Error\nFailed to initialize background images\n" RESET,
+			2);
 		mlx_terminate(game->mlx);
 		return (FAIL);
 	}
 	if (init_player_images(game) == FAIL)
 	{
-		ft_putstr_fd(RED "Error\nFailed to initialize player images\n" RESET, 2);
+		ft_putstr_fd(RED "Error\nFailed to initialize player images\n" RESET,
+			2);
 		mlx_terminate(game->mlx);
 		return (FAIL);
 	}

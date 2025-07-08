@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 11:30:53 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/08 12:54:26 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/08 22:45:08 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	get_player_pos(char **map, int *x, int *y)
 		col = 0;
 		while (map[row][col])
 		{
-			if (map[row][col] == 'P')
+			if (map[row][col] == PLAYER)
 			{
 				*x = col;
 				*y = row;
@@ -75,7 +75,7 @@ static int	count_collec(char **map)
 		col = 0;
 		while (map[row][col])
 		{
-			if (map[row][col] == 'C')
+			if (map[row][col] == COLLECTIBLE)
 				count++;
 			col++;
 		}
@@ -90,11 +90,11 @@ static void	floodfill(char **map, t_floodfill params)
 
 	if (!map || !map[params.y] || !map[params.y][params.x])
 		return ;
-	if (map[params.y][params.x] == '1' || map[params.y][params.x] == 'V')
+	if (map[params.y][params.x] == WALL || map[params.y][params.x] == 'V')
 		return ;
-	if (map[params.y][params.x] == 'C')
+	if (map[params.y][params.x] == COLLECTIBLE)
 		(*params.collec)++;
-	else if (map[params.y][params.x] == 'E')
+	else if (map[params.y][params.x] == EXIT)
 		*params.exit = 1;
 	map[params.y][params.x] = 'V';
 	next.collec = params.collec;
