@@ -6,13 +6,13 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:51:19 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/08 17:42:28 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/08 17:44:11 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-mlx_image_t	*load_image(mlx_t *mlx, const char *path)
+mlx_image_t	*load_image(mlx_t *mlx, char *path)
 {
 	mlx_image_t		*image;
 	mlx_texture_t	*texture;
