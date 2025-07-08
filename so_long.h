@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 10:23:16 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/08 18:51:06 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/08 19:13:13 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@
 // Window constants
 # define WIDTH 800
 # define HEIGHT 600
-# define TITLE "So Long"
+# define TITLE "So_long"
 
 // Game elements
 # define WALL '1'
@@ -119,6 +119,7 @@ void			cleanup_images(t_game *game);
 int				init_game(t_game *game);
 void 			render_map(t_game *game);
 
-void key_hook(mlx_key_data_t keydata, void *param);
+void 			key_hook(mlx_key_data_t keydata, void *param);
+void			move_player(t_game *game, int dx, int dy);
 
 #endif

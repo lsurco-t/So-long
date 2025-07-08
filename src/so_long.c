@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 10:21:40 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/08 18:19:29 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/08 19:07:04 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int argc, char **argv)
 		return (FAIL);
 	}
 	ft_memset(&game, 0, sizeof(t_game));
+	game.player_dir = DIR_DOWN;
 	game.map = parse_map(argv[1]);
 	if (!game.map || !game.map[0])
 	{
@@ -32,6 +33,7 @@ int	main(int argc, char **argv)
 		free_and_exit(game.map);
 	init_game(&game);
 	render_map(&game);
+	mlx_key_hook(game.mlx, key_hook, &game);
 	mlx_loop(game.mlx);
 	free_map(game.map);
 	return (0);

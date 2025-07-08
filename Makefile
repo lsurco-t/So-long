@@ -6,7 +6,7 @@
 #    By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/23 19:49:11 by lsurco-t          #+#    #+#              #
-#    Updated: 2025/07/08 18:19:38 by lsurco-t         ###   ########.fr        #
+#    Updated: 2025/07/08 19:12:21 by lsurco-t         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,9 +30,9 @@ SRC = $(SRC_DIR)/so_long.c \
 	  $(SRC_DIR)/cleanup.c \
       $(SRC_DIR)/game_init.c \
       $(SRC_DIR)/game_render.c \
-    #  $(SRC_DIR)/game_logic.c \
-    #  $(SRC_DIR)/player_movement.c \
-    #  $(SRC_DIR)/hardware_control.c \
+	  $(SRC_DIR)/player_movement.c \
+      $(SRC_DIR)/hardware_control.c \
+	 # $(SRC_DIR)/game_logic.c \
 
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 
