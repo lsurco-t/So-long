@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 10:23:16 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/08 18:10:28 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/08 18:51:06 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,14 @@ typedef struct s_floodfill
 	int			*exit;
 }				t_floodfill;
 
+typedef enum e_direction
+{
+    DIR_UP,
+    DIR_DOWN,
+    DIR_LEFT,
+    DIR_RIGHT
+}   t_direction;
+
 // Game structure
 typedef struct s_game
 {
@@ -84,6 +92,7 @@ typedef struct s_game
 	int			collectibles;
 	int			moves;
 	int			exit_open;
+	t_direction	player_dir;
 }				t_game;
 
 // Map utils
@@ -109,5 +118,7 @@ void			cleanup_images(t_game *game);
 
 int				init_game(t_game *game);
 void 			render_map(t_game *game);
+
+void key_hook(mlx_key_data_t keydata, void *param);
 
 #endif
