@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 10:23:16 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/08 13:02:12 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/08 13:15:16 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,15 +84,19 @@ typedef struct s_game
 }				t_game;
 
 // Map utils
-
 void			free_map_on_error(char **map, int lines);
 void			free_map(char **map);
 int				get_rows(char **map);
 int				get_columns(char **map);
 int				characters_to_check(char *line, const char *chars);
 
-// Map Functions
+// Map validations
 int				has_valid_path(char **map);
+int				has_valid_chars(char **map);
+int				has_valid_start_exit_collec(char **map);
+int				has_valid_walls(char **map);
+
+// Main map functions
 int				validate_map(char **game);
 char			**parse_map(char *filename);
 
