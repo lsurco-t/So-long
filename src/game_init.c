@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:51:19 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/08 17:44:11 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/08 17:57:44 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,35 +38,35 @@ mlx_image_t	*load_image(mlx_t *mlx, char *path)
 
 int init_player_images(t_game *game)
 {
-	game->img_player_up = load_image(game->mlx, "../textures/walk_up.png");
+	game->img_player_up = load_image(game->mlx, "./textures/walk_up.png");
 	if (!game->img_player_up)
 		return (FAIL);
-	game->img_player_down = load_image(game->mlx, "../textures/walk_down.png");
+	game->img_player_down = load_image(game->mlx, "./textures/walk_down.png");
 	if (!game->img_player_down)
 		return (FAIL);
-	game->img_player_left = load_image(game->mlx, "../textures/walk_left.png");
+	game->img_player_left = load_image(game->mlx, "./textures/walk_left.png");
 	if (!game->img_player_left)
 		return (FAIL);
-	game->img_player_right = load_image(game->mlx, "../textures/walk_right.png");
+	game->img_player_right = load_image(game->mlx, "./textures/walk_right.png");
 	if (!game->img_player_right)
 		return (FAIL);
 	return (SUCCESS);
 }
 int	init_background_images(t_game *game)
 {
-	game->img_wall = load_image(game->mlx, "../textures/wallStone_fence.png");
+	game->img_wall = load_image(game->mlx, "./textures/wallStone_fence.png");
 	if (!game->img_wall)
 		return (FAIL);
-	game->img_floor = load_image(game->mlx, "../assets/floor.png");
+	game->img_floor = load_image(game->mlx, "./textures/floor.png");
 	if (!game->img_floor)
 		return (FAIL);
-	game->img_collectible = load_image(game->mlx, "../maps/gem.png");
+	game->img_collectible = load_image(game->mlx, "./textures/gem.png");
 	if (!game->img_collectible)
 		return (FAIL);
-	game->img_exit = load_image(game->mlx, "../textures/groundExit.png");
+	game->img_exit = load_image(game->mlx, "./textures/groundExit.png");
 	if (!game->img_exit)
 		return (FAIL);
-	game->img_inwall = load_image(game->mlx, "../textures/wallStone_small.png");
+	game->img_inwall = load_image(game->mlx, "./textures/wallStone_small.png");
 	if (!game->img_inwall)
 		return (FAIL);
 	return (SUCCESS);

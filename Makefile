@@ -6,7 +6,7 @@
 #    By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/23 19:49:11 by lsurco-t          #+#    #+#              #
-#    Updated: 2025/07/08 17:48:07 by lsurco-t         ###   ########.fr        #
+#    Updated: 2025/07/08 17:52:21 by lsurco-t         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ SRC = $(SRC_DIR)/so_long.c \
       $(SRC_DIR)/map_valid_content.c \
       $(SRC_DIR)/map_valid_path.c \
 	  $(SRC_DIR)/cleanup.c \
-    #  $(SRC_DIR)/game_init.c \
+      $(SRC_DIR)/game_init.c \
     # $(SRC_DIR)/game_render.c \
     #  $(SRC_DIR)/game_logic.c \
     #  $(SRC_DIR)/player_movement.c \
