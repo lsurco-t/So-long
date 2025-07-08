@@ -79,8 +79,8 @@ int	has_valid_start_exit_collec(char **map)
 
 int	has_valid_chars(char **map)
 {
-	char *chars;
-	int i;
+	char	*chars;
+	int		i;
 
 	chars = "10CEP";
 	i = 0;
