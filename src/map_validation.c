@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:51:02 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/08 13:24:15 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/08 13:27:43 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,13 @@ static int	validate_playability(char **map)
 
 int	validate_map(char **map)
 {
-	if (!map || map[0])
+	if (!map || !map[0])
 		return (FAIL);
 	if (validate_content(map) == FAIL)
 		return (FAIL);
 	if (validate_structure(map) == FAIL)
 		return (FAIL);
-	if (validate_playability(map == FAIL))
+	if (validate_playability(map) == FAIL)
 		return (FAIL);
 	return (SUCCESS);
 }

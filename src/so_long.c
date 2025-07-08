@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 10:21:40 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/08 13:05:04 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/08 13:30:43 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 	}
 	ft_memset(&game, 0, sizeof(t_game));
 	game.map = parse_map(argv[1]);
-	if (!game.map || game.map[0] == '\0')
+	if (!game.map || !game.map[0])
 	{
 		ft_printf("Error\nFailed to read map file\n");
 		return (FAIL);

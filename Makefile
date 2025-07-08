@@ -6,7 +6,7 @@
 #    By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/23 19:49:11 by lsurco-t          #+#    #+#              #
-#    Updated: 2025/07/05 22:00:39 by lsurco-t         ###   ########.fr        #
+#    Updated: 2025/07/08 13:31:19 by lsurco-t         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,18 @@ LIBFT = $(LIBFT_DIR)/libft.a
 MLX42 = $(MLX42_DIR)/build/libmlx42.a
 
 LIBS = $(MLX42) $(LIBFT) -ldl -lglfw -pthread -lm
-SRC = $(SRC_DIR)/so_long.c
+SRC = $(SRC_DIR)/so_long.c \
+      $(SRC_DIR)/map_parser.c \
+      $(SRC_DIR)/map_utils.c \
+      $(SRC_DIR)/map_validation.c \
+      $(SRC_DIR)/map_valid_content.c \
+      $(SRC_DIR)/map_valid_path.c \
+      $(SRC_DIR)/game_init.c \
+      $(SRC_DIR)/game_render.c \
+      $(SRC_DIR)/game_logic.c \
+      $(SRC_DIR)/player_movement.c \
+      $(SRC_DIR)/hardware_control.c \
+      $(SRC_DIR)/cleanup.c
 
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
 

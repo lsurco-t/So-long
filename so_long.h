@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 10:23:16 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/08 13:15:16 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/08 13:28:35 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,8 @@
 // Tile size in pixels
 # define TILE_SIZE 32
 
-typedef struct s_floofill
+typedef struct s_floodfill
 {
-	char		**map;
 	int			x;
 	int			y;
 	int			*collec;
