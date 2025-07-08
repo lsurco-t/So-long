@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 10:21:40 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/07 21:01:03 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/08 10:58:18 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 	{
 		ft_printf(RED "Usage: so_long ./maps/xxx.ber\n" RESET);
-		return (1);
+		return (FAIL);
 	}
 	ft_memset(&game, 0, sizeof(t_game));
 	game.map = parse_map(argv[1]);
-	if (!game.map)
+	if (!game.map || game.map[0] == '\0')
 	{
 		ft_printf("Error\nFailed to read map file\n");
 		return (1);
