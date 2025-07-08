@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:51:02 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/07 23:27:20 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/08 10:55:08 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int	validate_map(char **map)
 	}
 	if (has_valid_start_exit_collec(map) == FAIL)
 	{
-		ft_putstr_fd(RED "Error\nMissing start, exit or collectible!" RESET, 2);
+		ft_putstr_fd(RED "Error\nWrong start, exit or collectible!" RESET, 2);
 		return (FAIL);
 	}
 	if (is_valid_walls(map) == FAIL)
