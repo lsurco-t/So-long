@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 10:23:16 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/08 13:38:35 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/08 17:27:30 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ char			**parse_map(char *map_path);
 
 // Cleanup functions
 int				free_and_exit(char **map);
+void			cleanup_images(t_game *game);
 
 
 int				init_game(t_game *game);
