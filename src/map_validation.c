@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:51:02 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/08 10:55:08 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/08 11:01:54 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int	has_valid_walls(char **map)
 	return (SUCCESS);
 }
 
-static int	count_game_elements(char **map, int *start, int *exit, int *collec)
+static void	count_game_elements(char **map, int *start, int *exit, int *collec)
 {
 	int	i;
 	int	j;
@@ -115,7 +115,7 @@ int	validate_map(char **map)
 		ft_putstr_fd(RED "Error\nWrong start, exit or collectible!" RESET, 2);
 		return (FAIL);
 	}
-	if (is_valid_walls(map) == FAIL)
+	if (has_valid_walls(map) == FAIL)
 	{
 		ft_putstr_fd(RED "Error\nIncomplete walls!" RESET, 2);
 		return (FAIL);
