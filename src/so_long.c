@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 10:21:40 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/08 17:52:14 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/08 18:02:19 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ int	main(int argc, char **argv)
 	if (validate_map(game.map) == FAIL)
 		free_and_exit(game.map);
 	init_game(&game);
+	game_render(&game);
 	return (0);
 }
