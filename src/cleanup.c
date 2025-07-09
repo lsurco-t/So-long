@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:52:32 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/09 10:39:54 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/09 10:46:11 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,21 +34,27 @@ void	cleanup_images(t_game *game)
 
 int	free_and_exit(char **map)
 {
+	if(!map)
+		return (FAIL);
 	free_map(map);
 	return (FAIL);
 }
 int free_and_exit_with_cleanup(t_game *game)
 {
+	if(!game)
+		return (FAIL);
+	cleanup_images(game);
 	if (game->mlx)
 		mlx_terminate(game->mlx);
-	cleanup_images(game);
 	free_map(game->map);
 	return (FAIL);
 }
 void free_map_mlx(t_game *game)
 {
+	if(!game)
+		return;
+	cleanup_images(game);
 	if (game->mlx)
 		mlx_terminate(game->mlx);
-	cleanup_images(game);
 	free_map(game->map);
 }
