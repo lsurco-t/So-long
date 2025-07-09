@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:51:45 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/09 23:07:05 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/09 23:42:44 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,10 @@ void	move_player(t_game *game, int dx, int dy)
 	int	new_x;
 	int	new_y;
 	int	collected;
+	int	standing_on_exit;
 
 	collected = 0;
+	standing_on_exit = (game->map[game->player_y][game->player_x] == EXIT);
 	new_x = game->player_x + dx;
 	new_y = game->player_y + dy;
 	if (new_x < 0 || new_x >= game->map_width || new_y < 0
@@ -79,7 +81,10 @@ void	move_player(t_game *game, int dx, int dy)
 	exit_status(game);
 	if (game->map[new_y][new_x] == EXIT && game->exit_open)
 		victory(game);
-	game->map[game->player_y][game->player_x] = FLOOR;
+	if (standing_on_exit)
+		game->map[game->player_y][game->player_x] = EXIT;
+	else
+		game->map[game->player_y][game->player_x] = FLOOR;
 	if (game->map[new_y][new_x] != EXIT)
 		game->map[new_y][new_x] = PLAYER;
 	player_move_count(game, new_x, new_y);
