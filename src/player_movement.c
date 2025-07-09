@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:51:45 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/09 15:30:10 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/09 16:35:44 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	update_player_position(t_game *game)
 	}
 }
 
-void	render_player(t_game *game)
+void	render_player_update(t_game *game)
 {
 	mlx_image_t	*player_image;
 
@@ -51,13 +51,12 @@ void	render_player(t_game *game)
 		game->player_y * TILE_SIZE);
 }
 
-int	player_move_count(t_game *game, int new_x, int new_y)
+void	player_move_count(t_game *game, int new_x, int new_y)
 {
 	game->player_x = new_x;
 	game->player_y = new_y;
 	game->moves++;
 	ft_printf("Total moves: %d\n", game->moves);
-	return (SUCCESS);
 }
 
 void	move_player(t_game *game, int dx, int dy)
@@ -72,10 +71,23 @@ void	move_player(t_game *game, int dx, int dy)
 		return ;
 	if (game->map[new_y][new_x] == WALL)
 		return ;
+	if (game->map[new_y][new_x] == COLLECTIBLE)
+    {
+        game->collectibles--;
+        game->map[new_y][new_x] = FLOOR;
+    }
+    exit_status(game);
+	if (game->map[new_y][new_x] == EXIT && game->exit_open)
+    {
+        ft_printf(GREEN "Congratulations! You've won the game!\n" RESET);
+        cleanup_images(game);
+        mlx_terminate(game->mlx);
+        free_map(game->map);
+        exit(EXIT_SUCCESS);
+    }
 	game->map[game->player_y][game->player_x] = FLOOR;
 	game->map[new_y][new_x] = PLAYER;
-	game->player_x = new_x;
-	game->player_y = new_y;
-	game->moves++;
+	player_move_count(game, new_x, new_y);
+	render_player_update(game);
 	render_map(game);
 }
