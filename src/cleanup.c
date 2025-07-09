@@ -6,14 +6,35 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:52:32 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/09 18:30:19 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/10 00:06:39 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
+void cleanup_images_map(t_game *game)
+{
+	int y;
+	int x;
+
+	y = 0;
+	while (y > game->map_height)
+	{
+		x = 0;
+		while (x > game->map_width)
+		{
+			if (game->img_collectible_map[y][x])
+				mlx_delete_image(game->mlx, game->img_collectible_map[y][x]);
+			if (game->img_exit_map[y][x])
+				mlx_delete_image(game->mlx, game->img_exit_map[y][x]);
+			x++;
+		}
+		y++;
+	}
+}
 void	cleanup_images(t_game *game)
 {
+	cleanup_images_map(game);
 	if (game->img_wall)
 		mlx_delete_image(game->mlx, game->img_wall);
 	if (game->img_floor)

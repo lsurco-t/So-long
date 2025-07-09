@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:51:31 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/09 23:07:18 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/09 23:58:54 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ void	render_extras(char tile, t_game *game, int x, int y)
 	{
 		game->img_collectible_map[y][x] = load_image(game->mlx,
 				"./textures/gem.png");
+		if (!game->img_collectible_map[y][x])
+			return ;
 		mlx_image_to_window(game->mlx, game->img_collectible_map[y][x], x
 			* TILE_SIZE, y * TILE_SIZE);
 	}
@@ -43,6 +45,8 @@ void	render_extras(char tile, t_game *game, int x, int y)
 	{
 		game->img_exit_map[y][x] = load_image(game->mlx,
 				"./textures/groundExit.png");
+		if (!game->img_exit_map[y][x])
+			return ;
 		mlx_image_to_window(game->mlx, game->img_exit_map[y][x], x * TILE_SIZE,
 			y * TILE_SIZE);
 	}
