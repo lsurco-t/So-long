@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 10:23:16 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/09 22:57:26 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/09 23:47:06 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,12 +122,13 @@ void			render_map(t_game *game);
 void 			free_map_mlx(t_game *game);
 void			key_hook(mlx_key_data_t keydata, void *param);
 void			move_player(t_game *game, int dx, int dy);
-void			update_player_position(t_game *game);
+void			default_player_position(t_game *game);
 void			exit_status(t_game *game);
 int 			count_collectibles(t_game *game);
 void 			victory(t_game *game);
 void 			update_collectibles(t_game *game, int new_x, int new_y);
 int				failed_parse_map(void);
 mlx_image_t		*load_image(mlx_t *mlx, char *path);
-void	render_player(t_game *game, int x, int y);
+void			render_player(t_game *game, int x, int y);
+
 #endif

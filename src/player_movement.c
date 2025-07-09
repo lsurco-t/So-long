@@ -6,13 +6,13 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:51:45 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/09 23:42:44 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/09 23:46:43 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	update_player_position(t_game *game)
+void	default_player_position(t_game *game)
 {
 	int	y;
 	int	x;

@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:51:19 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/09 23:08:50 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/09 23:50:59 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ int	init_game(t_game *game)
 {
 	game->map_width = get_columns(game->map);
 	game->map_height = get_rows(game->map);
+	game->player_dir = DIR_DOWN;
 	if (game->map_width <= 0 || game->map_height <= 0)
 	{
 		ft_putstr_fd(RED "Error\nInvalid map dimensions\n" RESET, 2);
