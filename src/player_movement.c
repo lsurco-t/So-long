@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:51:45 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/09 18:15:10 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/09 18:30:33 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	player_move_count(t_game *game, int new_x, int new_y)
 	game->moves++;
 	ft_printf("Total moves: %d\n", game->moves);
 }
+
 void	move_player(t_game *game, int dx, int dy)
 {
 	int	new_x;

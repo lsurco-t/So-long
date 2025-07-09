@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:52:32 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/09 10:56:59 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/09 18:30:19 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,10 @@ void	free_map_mlx(t_game *game)
 	if (game->mlx)
 		mlx_terminate(game->mlx);
 	free_map(game->map);
+}
+
+int	failed_parse_map(void)
+{
+	ft_printf("Error\nFailed to read map file\n");
+	return (FAIL);
 }
