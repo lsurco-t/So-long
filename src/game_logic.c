@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:52:18 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/09 16:47:45 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/09 16:57:27 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,12 @@ void collectible_status(t_game *game, int y, int x)
     }
 }
 
-int	exit_status(t_game *game)
+void	exit_status(t_game *game)
 {
 	if (game->collectibles == 0)
 	{
 		game->exit_open = 1;
-		return (SUCCESS);
 	}
-	game->exit_open = 0;
-	return (FAIL);
+	else 
+		game->exit_open = 0;
 }
