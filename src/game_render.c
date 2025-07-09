@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:51:31 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/08 22:46:50 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/09 22:59:14 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,33 @@
 
 void	render_player(t_game *game, int x, int y)
 {
-	if (game->player_dir == DIR_RIGHT)
-		mlx_image_to_window(game->mlx, game->img_player_right, x * TILE_SIZE, y
-			* TILE_SIZE);
-	else if (game->player_dir == DIR_LEFT)
-		mlx_image_to_window(game->mlx, game->img_player_left, x * TILE_SIZE, y
-			* TILE_SIZE);
-	else if (game->player_dir == DIR_UP)
-		mlx_image_to_window(game->mlx, game->img_player_up, x * TILE_SIZE, y
-			* TILE_SIZE);
-	else
-		mlx_image_to_window(game->mlx, game->img_player_down, x * TILE_SIZE, y
-			* TILE_SIZE);
+	game->player_x = x;
+	game->player_y = y;
+	// After loading player images and knowing starting position:
+mlx_image_to_window(game->mlx, game->img_player_up, game->player_x * TILE_SIZE, game->player_y * TILE_SIZE);
+mlx_image_to_window(game->mlx, game->img_player_down, game->player_x * TILE_SIZE, game->player_y * TILE_SIZE);
+mlx_image_to_window(game->mlx, game->img_player_left, game->player_x * TILE_SIZE, game->player_y * TILE_SIZE);
+mlx_image_to_window(game->mlx, game->img_player_right, game->player_x * TILE_SIZE, game->player_y * TILE_SIZE);
+
+// Enable only the starting direction:
+game->img_player_up->enabled = (game->player_dir == DIR_UP);
+game->img_player_down->enabled = (game->player_dir == DIR_DOWN);
+game->img_player_left->enabled = (game->player_dir == DIR_LEFT);
+game->img_player_right->enabled = (game->player_dir == DIR_RIGHT);
 }
 
 void	render_extras(char tile, t_game *game, int x, int y)
 {
-	if (tile == COLLECTIBLE)
-		mlx_image_to_window(game->mlx, game->img_collectible, x * TILE_SIZE, y
-			* TILE_SIZE);
-	else if (tile == EXIT)
-		mlx_image_to_window(game->mlx, game->img_exit, x * TILE_SIZE, y
-			* TILE_SIZE);
+    if (tile == COLLECTIBLE)
+    {
+        game->img_collectible_map[y][x] = load_image(game->mlx, "./textures/gem.png");
+        mlx_image_to_window(game->mlx, game->img_collectible_map[y][x], x * TILE_SIZE, y * TILE_SIZE);
+    }
+    else if (tile == EXIT)
+    {
+        game->img_exit_map[y][x] = load_image(game->mlx, "./textures/groundExit.png");
+        mlx_image_to_window(game->mlx, game->img_exit_map[y][x], x * TILE_SIZE, y * TILE_SIZE);
+    }
 }
 
 void	render_map(t_game *game)
@@ -58,8 +63,6 @@ void	render_map(t_game *game)
 					* TILE_SIZE);
 			else if (tile == COLLECTIBLE || tile == EXIT)
 				render_extras(tile, game, x, y);
-			else if (tile == PLAYER)
-				render_player(game, x, y);
 			x++;
 		}
 		y++;

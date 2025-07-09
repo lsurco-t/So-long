@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 10:21:40 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/09 18:29:39 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/09 23:02:15 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int	main(int argc, char **argv)
 	if (init_game(&game) == FAIL)
 		return (free_and_exit_with_cleanup(&game));
 	render_map(&game);
+	render_player(&game, game.player_x, game.player_y);
 	mlx_key_hook(game.mlx, key_hook, &game);
 	mlx_loop(game.mlx);
 	free_map_mlx(&game);
