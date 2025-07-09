@@ -6,13 +6,13 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:51:19 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/09 10:26:51 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/09 10:58:27 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-mlx_image_t	*load_image(mlx_t *mlx, char *path)
+static mlx_image_t	*load_image(mlx_t *mlx, char *path)
 {
 	mlx_image_t		*image;
 	mlx_texture_t	*texture;
@@ -36,7 +36,7 @@ mlx_image_t	*load_image(mlx_t *mlx, char *path)
 	return (image);
 }
 
-int	init_player_images(t_game *game)
+static int	init_player_images(t_game *game)
 {
 	game->img_player_up = load_image(game->mlx, "./textures/walk_up.png");
 	if (!game->img_player_up)
@@ -52,7 +52,8 @@ int	init_player_images(t_game *game)
 		return (FAIL);
 	return (SUCCESS);
 }
-int	init_background_images(t_game *game)
+
+static int	init_background_images(t_game *game)
 {
 	game->img_wall = load_image(game->mlx, "./textures/wallStone_fence.png");
 	if (!game->img_wall)
@@ -72,6 +73,23 @@ int	init_background_images(t_game *game)
 	return (SUCCESS);
 }
 
+static int	init_game_content(t_game *game)
+{
+	if (init_background_images(game) == FAIL)
+	{
+		ft_putstr_fd(RED "Error\nFailed to initialize background images\n"
+			RESET, 2);
+		return (FAIL);
+	}
+	if (init_player_images(game) == FAIL)
+	{
+		ft_putstr_fd(RED "Error\nFailed to initialize player images\n" RESET,
+			2);
+		return (FAIL);
+	}
+	return (SUCCESS);
+}
+
 int	init_game(t_game *game)
 {
 	game->map_width = get_columns(game->map);
@@ -88,17 +106,7 @@ int	init_game(t_game *game)
 		ft_putstr_fd(RED "Error\nFailed to initialize MLX42\n" RESET, 2);
 		return (FAIL);
 	}
-	if (init_background_images(game) == FAIL)
-	{
-		ft_putstr_fd(RED "Error\nFailed to initialize background images\n" RESET,
-			2);
+	if (init_game_content(game) == FAIL)
 		return (FAIL);
-	}
-	if (init_player_images(game) == FAIL)
-	{
-		ft_putstr_fd(RED "Error\nFailed to initialize player images\n" RESET,
-			2);
-		return (FAIL);
-	}
 	return (SUCCESS);
 }
