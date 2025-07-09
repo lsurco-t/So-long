@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 10:21:40 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/09 16:03:54 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/09 17:34:26 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ int	main(int argc, char **argv)
 	}
 	if (validate_map(game.map) == FAIL)
 		return (free_and_exit(game.map));
+	count_collectibles(&game);
+	ft_printf(BLUE "Collectibles: %d\n" RESET, game.collectibles);
 	update_player_position(&game);
 	if (init_game(&game) == FAIL)
 		return (free_and_exit_with_cleanup(&game));

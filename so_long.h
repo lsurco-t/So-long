@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 10:23:16 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/09 16:57:40 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/09 18:15:24 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,5 +122,8 @@ void			key_hook(mlx_key_data_t keydata, void *param);
 void			move_player(t_game *game, int dx, int dy);
 void			update_player_position(t_game *game);
 void			exit_status(t_game *game);
-void 			collectible_status(t_game *game, int y, int x);
+int 			count_collectibles(t_game *game);
+void 			victory(t_game *game);
+void 			update_collectibles(t_game *game, int new_x, int new_y);
+
 #endif

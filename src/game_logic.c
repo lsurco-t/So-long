@@ -6,24 +6,19 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:52:18 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/09 16:57:27 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/09 18:16:33 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void collectible_status(t_game *game, int y, int x)
+void	update_collectibles(t_game *game, int new_x, int new_y)
 {
-	int new_x;
-	int new_y;
-
-	new_x = x;
-	new_y = y;
-	if(game->map[new_y][new_x] == COLLECTIBLE)
-    {
-        game->collectibles--;
-        game->map[new_y][new_x] = FLOOR;
-    }
+	if (game->map[new_y][new_x] == COLLECTIBLE)
+	{
+		game->collectibles--;
+		game->map[new_y][new_x] = FLOOR;
+	}
 }
 
 void	exit_status(t_game *game)
@@ -32,6 +27,35 @@ void	exit_status(t_game *game)
 	{
 		game->exit_open = 1;
 	}
-	else 
+	else
 		game->exit_open = 0;
+}
+
+int	count_collectibles(t_game *game)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	while (game->map[y])
+	{
+		x = 0;
+		while (game->map[y][x])
+		{
+			if (game->map[y][x] == COLLECTIBLE)
+				game->collectibles++;
+			x++;
+		}
+		y++;
+	}
+	return (game->collectibles);
+}
+
+void	victory(t_game *game)
+{
+	ft_printf(GREEN "Congratulations! You've won the game!\n" RESET);
+	cleanup_images(game);
+	mlx_terminate(game->mlx);
+	free_map(game->map);
+	exit(EXIT_SUCCESS);
 }
