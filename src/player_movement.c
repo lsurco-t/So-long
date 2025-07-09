@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:51:45 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/09 16:35:44 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/09 16:48:24 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,11 +71,7 @@ void	move_player(t_game *game, int dx, int dy)
 		return ;
 	if (game->map[new_y][new_x] == WALL)
 		return ;
-	if (game->map[new_y][new_x] == COLLECTIBLE)
-    {
-        game->collectibles--;
-        game->map[new_y][new_x] = FLOOR;
-    }
+	collectible_status(game, new_y, new_x);
     exit_status(game);
 	if (game->map[new_y][new_x] == EXIT && game->exit_open)
     {
