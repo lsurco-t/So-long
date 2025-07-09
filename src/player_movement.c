@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:51:45 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/08 22:44:45 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/09 15:30:10 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,31 @@ void	update_player_position(t_game *game)
 		}
 		y++;
 	}
+}
+
+void	render_player(t_game *game)
+{
+	mlx_image_t	*player_image;
+
+	if (game->player_dir == DIR_UP)
+		player_image = game->img_player_up;
+	else if (game->player_dir == DIR_DOWN)
+		player_image = game->img_player_down;
+	else if (game->player_dir == DIR_LEFT)
+		player_image = game->img_player_left;
+	else
+		player_image = game->img_player_right;
+	mlx_image_to_window(game->mlx, player_image, game->player_x * TILE_SIZE,
+		game->player_y * TILE_SIZE);
+}
+
+int	player_move_count(t_game *game, int new_x, int new_y)
+{
+	game->player_x = new_x;
+	game->player_y = new_y;
+	game->moves++;
+	ft_printf("Total moves: %d\n", game->moves);
+	return (SUCCESS);
 }
 
 void	move_player(t_game *game, int dx, int dy)
