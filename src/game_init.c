@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:51:19 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/09 23:01:49 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/09 23:07:54 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ static int	init_game_content(t_game *game)
 {
 	if (init_background_images(game) == FAIL)
 	{
-		ft_putstr_fd(RED "Error\nFailed to initialize background images\n"
-			RESET, 2);
+		ft_putstr_fd(RED "Error\nFailed to initialize background images\n" RESET,
+			2);
 		return (FAIL);
 	}
 	if (init_player_images(game) == FAIL)
