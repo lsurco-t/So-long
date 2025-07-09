@@ -18,15 +18,15 @@ int	collectible_collected(t_game *game)
 	{
 		game->collectibles--;
 		game->map[game->player_y][game->player_x] = FLOOR;
-		mlx_image_to_window(game->mlx, game->img_floor,
-			game->player_x * TILE_SIZE, game->player_y * TILE_SIZE);
+		mlx_image_to_window(game->mlx, game->img_floor, game->player_x
+			* TILE_SIZE, game->player_y * TILE_SIZE);
 		return (SUCCESS);
 	}
 	return (FAIL);
 }
 int	exit_status(t_game *game)
 {
-	if( game->collectibles == 0 )
+	if (game->collectibles == 0)
 	{
 		game->exit_open = 1;
 		return (SUCCESS);
@@ -37,7 +37,7 @@ int	exit_status(t_game *game)
 		return (FAIL);
 	}
 }
-int check_game_won(t_game *game)
+int	check_game_won(t_game *game)
 {
 	if (game->map[game->player_y][game->player_x] == EXIT && game->exit_open)
 		return (SUCCESS);
