@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 10:23:16 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/08 19:44:48 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/09 10:40:43 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,7 @@
 # define BLUE "\033[0;34m"
 # define RESET "\033[0m"
 
-// Window constants
-# define WIDTH 800
-# define HEIGHT 600
+// Window settings
 # define TITLE "so_long"
 
 // Game elements
@@ -65,11 +63,11 @@ typedef struct s_floodfill
 
 typedef enum e_direction
 {
-    DIR_UP,
-    DIR_DOWN,
-    DIR_LEFT,
-    DIR_RIGHT
-}   t_direction;
+	DIR_UP,
+	DIR_DOWN,
+	DIR_LEFT,
+	DIR_RIGHT
+}				t_direction;
 
 // Game structure
 typedef struct s_game
@@ -115,11 +113,12 @@ char			**parse_map(char *map_path);
 // Cleanup functions
 int				free_and_exit(char **map);
 void			cleanup_images(t_game *game);
+int 			free_and_exit_with_cleanup(t_game *game);
 
 int				init_game(t_game *game);
-void 			render_map(t_game *game);
-
-void 			key_hook(mlx_key_data_t keydata, void *param);
+void			render_map(t_game *game);
+void 			free_map_mlx(t_game *game);
+void			key_hook(mlx_key_data_t keydata, void *param);
 void			move_player(t_game *game, int dx, int dy);
 void			update_player_position(t_game *game);
 

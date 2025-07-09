@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:51:19 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/08 17:57:44 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/09 10:26:51 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,11 @@ int	init_game(t_game *game)
 {
 	game->map_width = get_columns(game->map);
 	game->map_height = get_rows(game->map);
+	if (game->map_width <= 0 || game->map_height <= 0)
+	{
+		ft_putstr_fd(RED "Error\nInvalid map dimensions\n" RESET, 2);
+		return (FAIL);
+	}
 	game->mlx = mlx_init(game->map_width * TILE_SIZE, game->map_height
 			* TILE_SIZE, TITLE, false);
 	if (!game->mlx)
@@ -87,14 +92,12 @@ int	init_game(t_game *game)
 	{
 		ft_putstr_fd(RED "Error\nFailed to initialize background images\n" RESET,
 			2);
-		mlx_terminate(game->mlx);
 		return (FAIL);
 	}
 	if (init_player_images(game) == FAIL)
 	{
 		ft_putstr_fd(RED "Error\nFailed to initialize player images\n" RESET,
 			2);
-		mlx_terminate(game->mlx);
 		return (FAIL);
 	}
 	return (SUCCESS);

@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 10:21:40 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/08 22:30:41 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/09 10:40:24 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,10 @@ int	main(int argc, char **argv)
 		return (free_and_exit(game.map));
 	update_player_position(&game);
 	if (init_game(&game) == FAIL)
-	{
-		free_map(game.map);
-		ft_printf("Error\nFailed to initialize game\n");
-		return (FAIL);
-	}
+		return (free_and_exit_with_cleanup(&game));
 	render_map(&game);
 	mlx_key_hook(game.mlx, key_hook, &game);
 	mlx_loop(game.mlx);
-	free_map(game.map);
-	return (0);
+	free_map_mlx(&game);
+	return (SUCCESS);
 }
