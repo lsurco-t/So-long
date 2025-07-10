@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 10:23:16 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/10 11:45:43 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/10 11:57:50 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <string.h>
 # include <unistd.h>
 
-// Colors
+// Text colors
 # define GREEN "\033[0;32m"
 # define RED "\033[0;31m"
 # define BLUE "\033[0;34m"
@@ -54,6 +54,7 @@
 // Tile size in pixels
 # define TILE_SIZE 32
 
+// Helper structures
 typedef struct s_floodfill
 {
 	int			x;
@@ -113,7 +114,6 @@ int				validate_map(char **map);
 char			**parse_map(char *map_path);
 
 // Cleanup functions
-//int				free_and_exit(char **map);
 void			cleanup_images(t_game *game);
 int 			free_and_exit_with_cleanup(t_game *game);
 
@@ -131,6 +131,6 @@ int				print_error_return(int err);
 mlx_image_t		*load_image(mlx_t *mlx, char *path);
 void			render_player(t_game *game, int x, int y);
 void			player_move_count(t_game *game, int new_x, int new_y);
-void 	render_game(t_game *game, int x, int y);
+void 			render_game(t_game *game, int x, int y);
 
 #endif
