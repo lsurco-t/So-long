@@ -6,34 +6,11 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:51:45 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/10 09:38:50 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/10 11:10:16 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
-
-void	default_player_position(t_game *game)
-{
-	int	y;
-	int	x;
-
-	y = 0;
-	while (game->map[y])
-	{
-		x = 0;
-		while (game->map[y][x])
-		{
-			if (game->map[y][x] == PLAYER)
-			{
-				game->player_x = x;
-				game->player_y = y;
-				return ;
-			}
-			x++;
-		}
-		y++;
-	}
-}
 
 void	render_player_update(t_game *game)
 {
@@ -59,6 +36,15 @@ void	player_move_count(t_game *game, int new_x, int new_y)
 	ft_printf("Total moves: %d\n", game->moves);
 }
 
+static int	is_valid_move(t_game *game, int x, int y)
+{
+	if (x < 0 || x >= game->map_width || y < 0 || y >= game->map_height)
+		return (0);
+	if (game->map[y][x] == WALL)
+		return (0);
+	return (1);
+}
+
 void	move_player(t_game *game, int dx, int dy)
 {
 	int	new_x;
@@ -70,10 +56,7 @@ void	move_player(t_game *game, int dx, int dy)
 	standing_on_exit = (game->map[game->player_y][game->player_x] == EXIT);
 	new_x = game->player_x + dx;
 	new_y = game->player_y + dy;
-	if (new_x < 0 || new_x >= game->map_width || new_y < 0
-		|| new_y >= game->map_height)
-		return ;
-	if (game->map[new_y][new_x] == WALL)
+	if (is_valid_move(game, new_x, new_y) == 0)
 		return ;
 	if (game->map[new_y][new_x] == COLLECTIBLE)
 		collected = 1;

@@ -6,11 +6,34 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:52:18 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/10 09:37:50 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/10 11:10:27 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
+
+void	default_player_position(t_game *game)
+{
+	int	y;
+	int	x;
+
+	y = 0;
+	while (game->map[y])
+	{
+		x = 0;
+		while (game->map[y][x])
+		{
+			if (game->map[y][x] == PLAYER)
+			{
+				game->player_x = x;
+				game->player_y = y;
+				return ;
+			}
+			x++;
+		}
+		y++;
+	}
+}
 
 void	update_collectibles(t_game *game, int new_x, int new_y)
 {
