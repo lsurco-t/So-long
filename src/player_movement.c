@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:51:45 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/10 11:10:16 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/10 17:25:47 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,19 +45,12 @@ static int	is_valid_move(t_game *game, int x, int y)
 	return (1);
 }
 
-void	move_player(t_game *game, int dx, int dy)
+static void	handle_player_pos_update(t_game *game, int new_x, int new_y,
+		int standing_on_exit)
 {
-	int	new_x;
-	int	new_y;
 	int	collected;
-	int	standing_on_exit;
 
 	collected = 0;
-	standing_on_exit = (game->map[game->player_y][game->player_x] == EXIT);
-	new_x = game->player_x + dx;
-	new_y = game->player_y + dy;
-	if (is_valid_move(game, new_x, new_y) == 0)
-		return ;
 	if (game->map[new_y][new_x] == COLLECTIBLE)
 		collected = 1;
 	update_collectibles(game, new_x, new_y);
@@ -74,4 +67,18 @@ void	move_player(t_game *game, int dx, int dy)
 	if (collected && game->img_collectible_map[new_y][new_x])
 		game->img_collectible_map[new_y][new_x]->enabled = false;
 	render_player_update(game);
+}
+
+void	move_player(t_game *game, int dx, int dy)
+{
+	int	new_x;
+	int	new_y;
+	int	standing_on_exit;
+
+	standing_on_exit = (game->map[game->player_y][game->player_x] == EXIT);
+	new_x = game->player_x + dx;
+	new_y = game->player_y + dy;
+	if (is_valid_move(game, new_x, new_y) == 0)
+		return ;
+	handle_player_pos_update(game, new_x, new_y, standing_on_exit);
 }
