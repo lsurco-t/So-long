@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:52:18 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/09 18:30:39 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/10 09:37:50 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,9 @@ int	count_collectibles(t_game *game)
 	return (game->collectibles);
 }
 
-void	victory(t_game *game)
+void	victory(t_game *game, int y, int x)
 {
+	player_move_count(game, x, y);
 	ft_printf(GREEN "Congratulations! You've won the game!\n" RESET);
 	cleanup_images(game);
 	mlx_terminate(game->mlx);

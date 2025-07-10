@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/08 11:30:53 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/08 22:45:08 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/10 09:35:16 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,13 @@ static void	floodfill(char **map, t_floodfill params)
 
 	if (!map || !map[params.y] || !map[params.y][params.x])
 		return ;
-	if (map[params.y][params.x] == WALL || map[params.y][params.x] == 'V')
+	if (map[params.y][params.x] == WALL || map[params.y][params.x] == VISITED)
 		return ;
 	if (map[params.y][params.x] == COLLECTIBLE)
 		(*params.collec)++;
 	else if (map[params.y][params.x] == EXIT)
 		*params.exit = 1;
-	map[params.y][params.x] = 'V';
+	map[params.y][params.x] = VISITED;
 	next.collec = params.collec;
 	next.exit = params.exit;
 	next.x = params.x + 1;

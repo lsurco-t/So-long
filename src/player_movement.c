@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:51:45 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/09 23:46:43 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/10 09:38:50 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	move_player(t_game *game, int dx, int dy)
 	update_collectibles(game, new_x, new_y);
 	exit_status(game);
 	if (game->map[new_y][new_x] == EXIT && game->exit_open)
-		victory(game);
+		victory(game, new_x, new_y);
 	if (standing_on_exit)
 		game->map[game->player_y][game->player_x] = EXIT;
 	else
