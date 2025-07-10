@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:51:19 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/10 11:45:48 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/10 18:25:01 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,30 @@ static int	init_player_images(t_game *game)
 	return (SUCCESS);
 }
 
+static int	init_collectible_exit_images(t_game *game)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < game->map_height)
+	{
+		x = 0;
+		while (x < game->map_width)
+		{
+			if (game->map[y][x] == COLLECTIBLE)
+				game->img_collectible_map[y][x] = load_image(game->mlx,
+						"./textures/gem.png");
+			if (game->map[y][x] == EXIT)
+				game->img_exit_map[y][x] = load_image(game->mlx,
+						"./textures/groundExit.png");
+			x++;
+		}
+		y++;
+	}
+	return (SUCCESS);
+}
+
 static int	init_background_images(t_game *game)
 {
 	game->img_wall = load_image(game->mlx, "./textures/wallStone_fence.png");
@@ -67,23 +91,8 @@ static int	init_background_images(t_game *game)
 	game->img_exit = load_image(game->mlx, "./textures/groundExit.png");
 	if (!game->img_exit)
 		return (FAIL);
-	return (SUCCESS);
-}
-
-static int	init_game_content(t_game *game)
-{
-	if (init_background_images(game) == FAIL)
-	{
-		ft_putstr_fd(RED "Error\nFailed to initialize background\n" RESET,
-			2);
+	if (init_collectible_exit_images(game) == FAIL)
 		return (FAIL);
-	}
-	if (init_player_images(game) == FAIL)
-	{
-		ft_putstr_fd(RED "Error\nFailed to initialize player images\n" RESET,
-			2);
-		return (FAIL);
-	}
 	return (SUCCESS);
 }
 
@@ -93,10 +102,7 @@ int	init_game(t_game *game)
 	game->map_height = get_rows(game->map);
 	game->player_dir = DIR_DOWN;
 	if (game->map_width <= 0 || game->map_height <= 0)
-	{
-		ft_putstr_fd(RED "Error\nInvalid map dimensions\n" RESET, 2);
 		return (FAIL);
-	}
 	game->mlx = mlx_init(game->map_width * TILE_SIZE, game->map_height
 			* TILE_SIZE, TITLE, false);
 	if (!game->mlx)
@@ -104,7 +110,16 @@ int	init_game(t_game *game)
 		ft_putstr_fd(RED "Error\nFailed to initialize MLX42\n" RESET, 2);
 		return (FAIL);
 	}
-	if (init_game_content(game) == FAIL)
+	if (init_background_images(game) == FAIL)
+	{
+		ft_putstr_fd(RED "Error\nFailed to initialize background\n" RESET, 2);
 		return (FAIL);
+	}
+	if (init_player_images(game) == FAIL)
+	{
+		ft_putstr_fd(RED "Error\nFailed to initialize player images\n" RESET,
+			2);
+		return (FAIL);
+	}
 	return (SUCCESS);
 }

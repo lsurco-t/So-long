@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:51:31 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/10 10:19:16 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/10 18:08:34 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,19 +33,11 @@ void	render_player(t_game *game, int x, int y)
 void	render_extras(char tile, t_game *game, int x, int y)
 {
 	if (tile == COLLECTIBLE)
-	{
-		game->img_collectible_map[y][x] = load_image(game->mlx,
-				"./textures/gem.png");
 		mlx_image_to_window(game->mlx, game->img_collectible_map[y][x], x
 			* TILE_SIZE, y * TILE_SIZE);
-	}
 	else if (tile == EXIT)
-	{
-		game->img_exit_map[y][x] = load_image(game->mlx,
-				"./textures/groundExit.png");
 		mlx_image_to_window(game->mlx, game->img_exit_map[y][x], x * TILE_SIZE,
 			y * TILE_SIZE);
-	}
 }
 
 void	render_map(t_game *game)
