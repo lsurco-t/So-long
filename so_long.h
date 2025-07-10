@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 10:23:16 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/10 11:57:50 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/10 12:02:34 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,22 +115,30 @@ char			**parse_map(char *map_path);
 
 // Cleanup functions
 void			cleanup_images(t_game *game);
-int 			free_and_exit_with_cleanup(t_game *game);
+int				free_and_exit_with_cleanup(t_game *game);
+void			free_map_mlx(t_game *game);
+int				print_error_return(int err);
 
 int				init_game(t_game *game);
+mlx_image_t		*load_image(mlx_t *mlx, char *path);
+
+// Render functions
+void			render_player(t_game *game, int x, int y);
 void			render_map(t_game *game);
-void 			free_map_mlx(t_game *game);
-void			key_hook(mlx_key_data_t keydata, void *param);
+void			render_game(t_game *game, int x, int y);
+
+// Player movement
 void			move_player(t_game *game, int dx, int dy);
+void			player_move_count(t_game *game, int new_x, int new_y);
+
+// Game winning conditions
 void			default_player_position(t_game *game);
 void			exit_status(t_game *game);
-int 			count_collectibles(t_game *game);
-void 			victory(t_game *game, int y, int x);
-void 			update_collectibles(t_game *game, int new_x, int new_y);
-int				print_error_return(int err);
-mlx_image_t		*load_image(mlx_t *mlx, char *path);
-void			render_player(t_game *game, int x, int y);
-void			player_move_count(t_game *game, int new_x, int new_y);
-void 			render_game(t_game *game, int x, int y);
+int				count_collectibles(t_game *game);
+void			victory(t_game *game, int y, int x);
+void			update_collectibles(t_game *game, int new_x, int new_y);
+
+// Hardware interaction
+void			key_hook(mlx_key_data_t keydata, void *param);
 
 #endif
