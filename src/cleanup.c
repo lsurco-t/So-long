@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:52:32 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/10 10:35:44 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/10 10:43:23 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	cleanup_images_map(t_game *game)
 		y++;
 	}
 }
+
 void	cleanup_images(t_game *game)
 {
 	cleanup_images_map(game);
@@ -51,14 +52,6 @@ void	cleanup_images(t_game *game)
 		mlx_delete_image(game->mlx, game->img_player_left);
 	if (game->img_player_right)
 		mlx_delete_image(game->mlx, game->img_player_right);
-}
-
-int	free_and_exit(char **map)
-{
-	if (!map)
-		return (FAIL);
-	free_map(map);
-	return (FAIL);
 }
 
 int	free_and_exit_with_cleanup(t_game *game)
