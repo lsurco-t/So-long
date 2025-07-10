@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:51:19 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/10 18:25:01 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/10 21:00:26 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	init_player_images(t_game *game)
 	return (SUCCESS);
 }
 
-static int	init_collectible_exit_images(t_game *game)
+static int	init_collectible_images(t_game *game)
 {
 	int	x;
 	int	y;
@@ -65,11 +65,12 @@ static int	init_collectible_exit_images(t_game *game)
 		while (x < game->map_width)
 		{
 			if (game->map[y][x] == COLLECTIBLE)
+			{
 				game->img_collectible_map[y][x] = load_image(game->mlx,
 						"./textures/gem.png");
-			if (game->map[y][x] == EXIT)
-				game->img_exit_map[y][x] = load_image(game->mlx,
-						"./textures/groundExit.png");
+				if (!game->img_collectible_map[y][x])
+					return (FAIL);
+			}
 			x++;
 		}
 		y++;
@@ -91,7 +92,7 @@ static int	init_background_images(t_game *game)
 	game->img_exit = load_image(game->mlx, "./textures/groundExit.png");
 	if (!game->img_exit)
 		return (FAIL);
-	if (init_collectible_exit_images(game) == FAIL)
+	if (init_collectible_images(game) == FAIL)
 		return (FAIL);
 	return (SUCCESS);
 }

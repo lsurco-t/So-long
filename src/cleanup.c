@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:52:32 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/10 11:41:44 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/10 21:01:01 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ void	cleanup_images_map(t_game *game)
 		{
 			if (game->img_collectible_map[y][x])
 				mlx_delete_image(game->mlx, game->img_collectible_map[y][x]);
-			if (game->img_exit_map[y][x])
-				mlx_delete_image(game->mlx, game->img_exit_map[y][x]);
 			x++;
 		}
 		y++;
