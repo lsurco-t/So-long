@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 10:23:16 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/10 12:02:34 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/10 12:04:05 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,7 @@
 
 # include "./MLX42/include/MLX42/MLX42.h"
 # include "./libft/libft.h"
-# include <errno.h>
 # include <fcntl.h>
-# include <math.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
