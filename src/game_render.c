@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:51:31 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/10 09:59:33 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/10 10:19:16 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,4 +72,10 @@ void	render_map(t_game *game)
 		}
 		y++;
 	}
+}
+
+void	render_game(t_game *game, int x, int y)
+{
+	render_map(game);
+	render_player(game, x, y);
 }

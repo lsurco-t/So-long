@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:52:32 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/10 00:07:32 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/10 10:35:44 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,11 @@ void	free_map_mlx(t_game *game)
 	free_map(game->map);
 }
 
-int	failed_parse_map(void)
+int	print_error_return(int err)
 {
-	ft_printf("Error\nFailed to read map file\n");
+	if (err == 1)
+		ft_putstr_fd(RED "Error\nUsage ./so_long /maps/xxx.ber\n" RESET, 2);
+	else if (err == 2)
+		ft_putstr_fd(RED "Error\nMap file is not a valid .ber file\n" RESET, 2);
 	return (FAIL);
 }
