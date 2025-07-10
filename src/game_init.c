@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 16:51:19 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/09 23:50:59 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/10 11:45:48 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,6 @@ static int	init_background_images(t_game *game)
 		return (FAIL);
 	game->img_exit = load_image(game->mlx, "./textures/groundExit.png");
 	if (!game->img_exit)
-		return (FAIL);
-	game->img_inwall = load_image(game->mlx, "./textures/wallStone_small.png");
-	if (!game->img_inwall)
 		return (FAIL);
 	return (SUCCESS);
 }

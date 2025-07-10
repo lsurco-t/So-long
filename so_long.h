@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 10:23:16 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/10 10:32:24 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/10 11:45:43 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ typedef struct s_game
 {
 	mlx_t		*mlx;
 	mlx_image_t	*img_wall;
-	mlx_image_t	*img_inwall;
 	mlx_image_t	*img_floor;
 	mlx_image_t	*img_collectible;
 	mlx_image_t	*img_collectible_map[128][128];
@@ -114,7 +113,7 @@ int				validate_map(char **map);
 char			**parse_map(char *map_path);
 
 // Cleanup functions
-int				free_and_exit(char **map);
+//int				free_and_exit(char **map);
 void			cleanup_images(t_game *game);
 int 			free_and_exit_with_cleanup(t_game *game);
 
