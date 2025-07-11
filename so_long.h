@@ -6,7 +6,7 @@
 /*   By: lsurco-t <lsurco-t@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/03 10:23:16 by lsurco-t          #+#    #+#             */
-/*   Updated: 2025/07/10 21:00:35 by lsurco-t         ###   ########.fr       */
+/*   Updated: 2025/07/11 10:54:30 by lsurco-t         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@
 # define VISITED 'V'
 
 // Tile size in pixels
-# define TILE_SIZE 32
+# define TILE_SIZE 64
 
 // Helper structures
 typedef struct s_floodfill
