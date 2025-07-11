@@ -4,7 +4,7 @@ A simple 2D game built with [MLX42]
 
 ## 📋 Project Overview
 
-**so_long** is a small graphical game where the player must collect all collectibles and reach the exit on a map defined in a `.ber` file.  
+**So_long** is a small graphical game where the player must collect all collectibles and reach the exit on a map defined in a `.ber` file.  
 The project demonstrates file parsing, map validation, pathfinding, resource management, and basic graphics programming.
 
 ---
@@ -61,5 +61,5 @@ The project demonstrates file parsing, map validation, pathfinding, resource man
 
 ## Authors
 
-**lsurco-t
+**lsurco-t**
 	
