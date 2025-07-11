@@ -1,6 +1,6 @@
-# so_long
+# So_long
 
-A simple 2D game built with [MLX42]
+A simple 2D game built with **MLX42**
 
 ## 📋 Project Overview
 
